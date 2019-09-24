@@ -1,14 +1,14 @@
 class HashTable:
 	def __init__(self, sz, stp):
-		self.size = sz
+		self.sizes = sz
 		self.step = stp
-		self.slots = [None] * self.size
+		self.slots = [None] * self.sizes
 
 	def hash_fun(self, value):        
 		result = 0
 		for i in range(len(value)):
 			result += (ord(value[i]) * (1+i))
-		result = result % self.size
+		result = result % self.sizes
 		return result
 	
 	def seek_slot(self, value):
@@ -16,10 +16,10 @@ class HashTable:
 		if self.slots[slot_number] is None:
 			return slot_number
 		else:
-			for i in range(self.size):
+			for i in range(self.sizes):
 				slot_number += self.step
-				if slot_number >= self.size:
-					slot_number -= self.size
+				if slot_number >= self.sizes:
+					slot_number -= self.sizes
 				if self.slots[slot_number] is None:
 					return slot_number
 		return None
@@ -37,10 +37,10 @@ class HashTable:
 		if self.slots[slot_number] == value:
 			return slot_number
 		else:
-			for i in range(self.size):
+			for i in range(self.sizes):
 				slot_number += self.step
-				if slot_number >= self.size:
-					slot_number -= self.size
+				if slot_number >= self.sizes:
+					slot_number -= self.sizes
 				if self.slots[slot_number] == value:
 					return slot_number
 
