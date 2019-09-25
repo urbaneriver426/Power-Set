@@ -76,13 +76,25 @@ class PowerSet(HashTable):
 		return False
 
 	def intersection(self, set2):
-		return self.powerSet.intersection(set2.powerSet)
+		newSet = self.powerSet.intersection(set2.powerSet)
+		newPowerSet = PowerSet()
+		for i in newSet:
+			newPowerSet.put(i)
+		return newPowerSet
 
 	def union(self, set2):
-		return self.powerSet.union(set2.powerSet)
+		newSet = self.powerSet.union(set2.powerSet)
+		newPowerSet = PowerSet()
+		for i in newSet:
+			newPowerSet.put(i)
+		return newPowerSet
 
 	def difference(self, set2):
-		return self.powerSet.difference(set2.powerSet)
+		newSet = self.powerSet.difference(set2.powerSet)
+		newPowerSet = PowerSet()
+		for i in newSet:
+			newPowerSet.put(i)
+		return newPowerSet
 
 	def issubset(self, set2):
 		return set2.powerSet.issubset(self.powerSet)
